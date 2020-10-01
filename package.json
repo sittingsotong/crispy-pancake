@@ -4,8 +4,9 @@
   "description": "Telegram bot for meals at home",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "build": "tsc",
+    "test": "npm run build",
+    "start": "tsc && node dist/index.js"
   },
   "repository": {
     "type": "git",
@@ -16,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/sittingsotong/crispy-pancake/issues"
   },
-  "homepage": "https://github.com/sittingsotong/crispy-pancake#readme"
+  "homepage": "https://github.com/sittingsotong/crispy-pancake#readme",
+  "devDependencies": {
+    "ts-node": "^9.0.0"
+  }
 }
