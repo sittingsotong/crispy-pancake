@@ -2,10 +2,10 @@
   "name": "crispy-pancake",
   "version": "1.0.0",
   "description": "Telegram bot for meals at home",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
-    "test": "npm run build",
+    "dev": "nodemon --watch src --exec tsc && node dist/index.js --inspect",
     "start": "tsc && node dist/index.js"
   },
   "repository": {
@@ -18,7 +18,18 @@
     "url": "https://github.com/sittingsotong/crispy-pancake/issues"
   },
   "homepage": "https://github.com/sittingsotong/crispy-pancake#readme",
+  "dependencies": {
+    "@typegoose/typegoose": "^7.4.1",
+    "@types/mongoose": "^5.7.36",
+    "@types/node": "^14.11.2",
+    "dotenv": "^8.2.0",
+    "mongoose": "^5.10.7",
+    "telegraf": "^3.38.0",
+    "ts-node": "^9.0.0",
+    "typegoose": "^5.9.1",
+    "typescript": "^4.0.3"
+  },
   "devDependencies": {
-    "ts-node": "^9.0.0"
+    "nodemon": "^2.0.4"
   }
 }
