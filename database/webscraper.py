@@ -8,7 +8,8 @@ import os
 load_dotenv()
 client = MongoClient(os.getenv("ATLAS_URI"))
 db = client['PancakeBot']
-recipes = db.recipes
+recipes = db.recipe
+category_links = db.links
 
 headers = {
     'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36 RuxitSynthetic/1.0 v6665588320 t38550 ath9b965f92 altpub cvcv=2'}
@@ -23,7 +24,7 @@ def scraping_recipe(url):
 
 	scraper = scrape_me(url)
 	recipe["title"] = scraper.title()
-	recipe["total time"] = scraper.total_time()
+	recipe["totalTime"] = scraper.total_time()
 	recipe["yields"] = scraper.yields()
 	recipe["ingredients"] = scraper.ingredients()
 	recipe["instructions"] = scraper.instructions()
@@ -42,6 +43,7 @@ def get_links_on_page(url):
 	for link in links:
 		if link.text == 'Read More':
 			recipe_link.append(link['href'])
+			category_links.insert_one({"link": link['href']})
 
 	print('obtained link on page')
 
@@ -81,4 +83,5 @@ def main(url):
 
 if __name__ == "__main__":
 	main(URL)
-	# scraping_recipe(recipe_url)
+
+# clear_mongo_cache()
