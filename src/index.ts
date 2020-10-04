@@ -5,5 +5,3 @@ import { setup } from "./helpers/setup";
 connection();
 
 setup(bot);
-
-bot.launch();
