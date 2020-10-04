@@ -1,13 +1,13 @@
-import { Markup } from "telegraf";
+import { Markup, Context } from "telegraf";
 
-export const main = {
+export const search = {
   setup: function (bot: any): void {
-    bot.command("/start", triggers.start);
+    bot.on("inline_query", triggers.inline);
   },
 };
 
 const triggers = {
-  start: function (ctx: any): void {
+  inline: async function (ctx: Context): Promise<void> {
     ctx.reply(
       `Hello ${ctx.from?.first_name}. What would you like to do?`,
       Markup.inlineKeyboard([
