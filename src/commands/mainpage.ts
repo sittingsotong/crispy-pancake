@@ -1,7 +1,6 @@
-import { Markup } from "telegraf";
 import { IContext } from "./lib";
 import { clearUsers, exists } from "../models/user";
-import { registerKeyboard } from "./lib/keyboards";
+import { registerKeyboard, welcomeKeyboard } from "./lib/keyboards";
 import ev from "../ev.config";
 
 export const mainpage = {
@@ -17,10 +16,7 @@ const triggers = {
     if (await exists(ctx)) {
       ctx.reply(
         `Welcome back *${ctx.from?.first_name}*. What would you like to do?`,
-        Markup.inlineKeyboard([
-          [Markup.callbackButton("Update Schedule", "update")],
-          [Markup.callbackButton("Find Recipes", "find")],
-        ]).extra()
+        welcomeKeyboard
       );
     } else {
       ctx.reply(
