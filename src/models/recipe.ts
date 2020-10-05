@@ -20,8 +20,3 @@ export class recipe extends Typegoose {
 export const Recipe = new recipe().getModelForClass(recipe, {
   schemaOptions: { collection: "recipes" },
 });
-
-export async function findIngredients(items: string[]) {
-  const existingRecipes = await Recipe.find({ ingredients: { $all: items } });
-  return existingRecipes;
-}

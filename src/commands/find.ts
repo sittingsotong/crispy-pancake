@@ -9,7 +9,7 @@ export const find = {
 
 const triggers = {
   find: async function (ctx: IContext): Promise<void> {
-    const recipes = await Recipe.find({ "total time": 60 });
+    const recipes = await Recipe.find({ totalTime: 60 });
     ctx.reply(`${recipes.map((x) => x["total time"])}`);
   },
 };

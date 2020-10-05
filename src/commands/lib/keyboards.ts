@@ -8,6 +8,13 @@ function keyboard(board: InlineKeyboardMarkup): ExtraEditMessage {
 
 const mainButton = Markup.callbackButton("🏠 Back to main...", "mainScreen");
 
+export const welcomeKeyboard = keyboard(
+  Markup.inlineKeyboard([
+    [Markup.callbackButton("Update Schedule", "update")],
+    [Markup.callbackButton("Find Recipes", "find")],
+  ])
+);
+
 export const registerKeyboard = keyboard(
   Markup.inlineKeyboard([
     [

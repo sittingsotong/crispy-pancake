@@ -9,6 +9,6 @@ export const setup = function (bot: any): void {
   command.mainpage.setup(bot);
   command.register.setup(bot);
   command.find.setup(bot);
-
+  command.search.setup(bot);
   bot.launch();
 };
